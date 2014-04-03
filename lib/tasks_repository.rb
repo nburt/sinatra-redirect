@@ -11,6 +11,6 @@ class TasksRepository
   end
 
   def display_all
-    @tasks_table.select(:name).to_a
+    @tasks_table.all
   end
 end
