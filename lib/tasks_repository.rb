@@ -17,4 +17,8 @@ class TasksRepository
   def update(task_id, info_to_update)
     @tasks_table.where(:id => task_id).update(info_to_update)
   end
+
+  def delete(task_id)
+    @tasks_table.where(:id => task_id).delete
+  end
 end
