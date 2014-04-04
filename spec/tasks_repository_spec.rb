@@ -5,14 +5,14 @@ require 'tasks_repository'
 describe 'it manages tasks' do
 
   before do
-    DB ||= Sequel.connect('postgres://gschool_user:password@localhost:5432/tasks_manager')
-    DB.create_table! :tasks do
+    db ||= Sequel.connect('postgres://gschool_user:password@localhost:5432/tasks_manager')
+    db.create_table! :tasks do
       primary_key :id
       String :name
       FalseClass :completed
     end
-    DB.set_column_default :tasks, :completed, false
-    @tasks = TasksRepository.new(DB)
+    db.set_column_default :tasks, :completed, false
+    @tasks = TasksRepository.new(db)
     @tasks.insert({:name => 'Get milk'})
     @tasks.insert({:name => 'Get eggs'})
   end
