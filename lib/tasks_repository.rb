@@ -18,6 +18,10 @@ class TasksRepository
     @tasks_table[:id => task_id]
   end
 
+  def display_all_tasks
+    @tasks_table.select(:name).to_a
+  end
+
   def update(task_id, info_to_update)
     @tasks_table.where(:id => task_id).update(info_to_update)
   end
