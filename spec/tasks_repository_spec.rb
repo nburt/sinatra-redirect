@@ -13,11 +13,11 @@ describe 'it manages tasks' do
     end
     db.set_column_default :tasks, :completed, false
     @tasks = TasksRepository.new(db)
-    @tasks.insert({:name => 'Get milk'})
-    @tasks.insert({:name => 'Get eggs'})
   end
 
   it 'allows a user to insert information into a database' do
+    @tasks.insert({:name => 'Get milk'})
+    @tasks.insert({:name => 'Get eggs'})
     expect(@tasks.display_all).to eq [
                       {:id => 1, :name => 'Get milk', :completed => false},
                       {:id => 2, :name => 'Get eggs', :completed => false}
@@ -25,6 +25,8 @@ describe 'it manages tasks' do
   end
 
   it 'allows a user to update tasks' do
+    @tasks.insert({:name => 'Get milk'})
+    @tasks.insert({:name => 'Get eggs'})
     @tasks.update(1, {:name =>'Get bread'})
     @tasks.update(2, {:name =>'Get cereal', :completed => true})
     expect(@tasks.display_all).to eq [
@@ -34,6 +36,8 @@ describe 'it manages tasks' do
   end
 
   it 'allows a user to delete tasks' do
+    @tasks.insert({:name => 'Get milk'})
+    @tasks.insert({:name => 'Get eggs'})
     @tasks.delete(1)
     expect(@tasks.display_all).to eq [
                       {:id => 2, :name => 'Get eggs', :completed => false}
@@ -41,10 +45,14 @@ describe 'it manages tasks' do
   end
 
   it 'allows a user to views tasks by id' do
+    @tasks.insert({:name => 'Get milk'})
+    @tasks.insert({:name => 'Get eggs'})
     expect(@tasks.display_task_by_id(1)).to eq({:id => 1, :name => 'Get milk', :completed => false})
   end
 
   it 'allows a user to find all the tasks in the table' do
+    @tasks.insert({:name => 'Get milk'})
+    @tasks.insert({:name => 'Get eggs'})
     expect(@tasks.display_all_tasks).to eq [
                       {:name => 'Get milk'},
                       {:name => 'Get eggs'}
