@@ -46,6 +46,6 @@ describe 'it manages tasks' do
   it 'allows a user to views tasks by id' do
     @tasks.insert({:name => 'Get milk'})
     @tasks.insert({:name => 'Get eggs'})
-    expect(@tasks.display_task_by_id(:id => 1)).to eq({:id => 1, :name => 'Get milk', :completed => false})
+    expect(@tasks.display_task_by_id(1)).to eq({:id => 1, :name => 'Get milk', :completed => false})
   end
 end

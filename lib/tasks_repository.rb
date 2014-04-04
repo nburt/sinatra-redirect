@@ -15,7 +15,7 @@ class TasksRepository
   end
 
   def display_task_by_id(task_id)
-    @tasks_table[task_id]
+    @tasks_table[:id => task_id]
   end
 
   def update(task_id, info_to_update)
